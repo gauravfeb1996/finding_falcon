@@ -1,0 +1,11 @@
+.drop-down {
+    width: 20vw;
+    height: 45px;
+    background: #f1ebeb;
+    font-size: 18px;
+    border-color: black;
+}
+
+.drop-down:focus{
+    outline: black;
+}

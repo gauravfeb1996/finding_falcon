@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 
 import Header from '../src/components/Header';
 import Footer from '../src/components/Footer';
-import Main from '../src/screens/Main';
+import Main from '../src/screens/Main/Main';
 
 function App() {
   return (

@@ -14,7 +14,7 @@ import apiHandler from '../../utils/api/apiHandler.js';
 function* planetRequestSaga(action) {
     try {
         const res = yield call(apiHandler.getDataAPI, `/planets`);
-        yield put(getPlanetsSuccess(res.data));
+        yield put(getPlanetsSuccess(res));
     } catch (error) {
         console.log(error);
     }

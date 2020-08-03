@@ -14,7 +14,7 @@ import apiHandler from '../../utils/api/apiHandler.js';
 function* spaceShipsRequestSaga(action) {
     try {
         const res = yield call(apiHandler.getDataAPI, `/vehicles`);
-        yield put(getSpaceShipsSuccess(res.data));
+        yield put(getSpaceShipsSuccess(res));
     } catch (error) {
         console.log(error);
     }

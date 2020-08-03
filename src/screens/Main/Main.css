@@ -1,0 +1,44 @@
+.image-area {
+    height: 200px;
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+
+.image-wrapper {
+    height: 100%;
+    width: fit-content;
+    margin: auto;
+}
+
+img {
+    height: 100%;
+    width: auto;
+    border: 2px solid #939292;
+    border-radius: 50%;
+    background-color: #d7e9c5;
+}
+
+.main-content-area {
+    width: 100%;
+}
+
+.drop-down-area {
+    display: flex;
+    align-items: center;
+}
+
+.drop-down-grid {
+    width: 25%;
+}
+
+.drop-down-wrapper {
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 32px;
+}
+
+.radio-button-wrapper {
+    width: 80%;
+    margin: auto;
+    display: grid;
+}

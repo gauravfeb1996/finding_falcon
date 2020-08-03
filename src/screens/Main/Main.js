@@ -2,11 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './Main.css';
 
-import falcon from '../assets/falcon.svg';
+import MainContent from '../Main/MainContent';
 
-import { getTokenRequest } from '../store/actions/tokenAction/getToken';
-import { getPlanetsRequest } from '../store/actions/planets/getPlanets';
-import { getSpaceShipsRequest } from '../store/actions/spaceShips/getSpaceShips';
+import falcon from '../../assets/falcon.svg';
+
+import { getTokenRequest } from '../../store/actions/tokenAction/getToken';
+import { getPlanetsRequest } from '../../store/actions/planets/getPlanets';
+import { getSpaceShipsRequest } from '../../store/actions/spaceShips/getSpaceShips';
 
 class Main extends React.Component {
 
@@ -18,20 +20,18 @@ class Main extends React.Component {
     }
 
     render() {
-        const { 
-            token
-        } = this.props;
+
         return (
-            <div className="image-area">
-                <div className="image-wrapper">
-                    <img src={falcon} alt="falcon"/>
+            <React.Fragment>
+                <div className="image-area">
+                    <div className="image-wrapper">
+                        <img src={falcon} alt="falcon"/>
+                    </div>
                 </div>
-                {token && 
-                    <span>
-                       {token}
-                    </span>
-                }
-            </div>
+                <div className="main-content-area">
+                    <MainContent />
+                </div>
+            </React.Fragment>
         );
     }
 }
