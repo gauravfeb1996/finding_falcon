@@ -1,0 +1,28 @@
+.header{
+    height: 100px;
+    width: 100%;
+    background: #688b59;
+    display: flex;
+    align-items: center;
+}
+
+.header-title{
+    margin: auto;
+    font-size: 40px;
+    font-weight: 500;
+    color: white;
+}
+
+.footer{
+    height: 50px;
+    width: 100%;
+    background: #688b59;
+    display: flex;
+    align-items: center;
+}
+
+.footer-title{
+    margin: auto;
+    font-size: 16px;
+    color: white;
+}

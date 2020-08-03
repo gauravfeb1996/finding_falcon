@@ -1,9 +1,13 @@
-// Imports: Dependencies
 import {combineReducers} from 'redux';
-// Imports: Reducers
+import tokenReducer from './tokenReducer';
+import planetsReducer from './planetReducer';
+import spaceShipsReducer from './spaceShipsReducer';
 
-// Redux: Root Reducer
+
 const rootReducer = combineReducers({
+    token: tokenReducer,
+    planets: planetsReducer,
+    spaceShips: spaceShipsReducer
 });
-// Exports
+
 export default rootReducer;

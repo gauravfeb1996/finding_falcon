@@ -1,11 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import '../App.css';
+import './HeadFoot.css';
 
 class Footer extends React.Component{
     render() {
         return (
-            <div />
+            <div className="footer">
+                <span className="footer-title">
+                    © 2020 geektrust.in. All rights reserved.
+                </span>
+            </div>
         );
     }
 }
