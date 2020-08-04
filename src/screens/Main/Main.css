@@ -38,7 +38,9 @@ img {
 }
 
 .radio-button-wrapper {
-    width: 80%;
+    width: 90%;
     margin: auto;
     display: grid;
+    font-size: 18px;
+    min-height: 145px;
 }

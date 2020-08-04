@@ -2,8 +2,10 @@
     width: 20vw;
     height: 45px;
     background: #f1ebeb;
-    font-size: 18px;
+    font-size: 22px;
     border-color: black;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .drop-down:focus{

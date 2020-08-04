@@ -1,0 +1,1 @@
+export const UPDATE_SHIP_COUNT_REUQEST = 'app/updateShipCount/UPDATE_SHIP_COUNT_REUQEST';
