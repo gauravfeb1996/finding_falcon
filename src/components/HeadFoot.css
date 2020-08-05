@@ -1,9 +1,15 @@
 .header{
-    height: 100px;
+    height: 65px;
     width: 100%;
     background: #688b59;
     display: flex;
     align-items: center;
+}
+
+@media (min-width: 769px) {
+    .header{
+        height: 100px;
+    }
 }
 
 .header-title{

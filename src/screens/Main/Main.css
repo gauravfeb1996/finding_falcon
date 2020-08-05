@@ -1,7 +1,13 @@
 .image-area {
     height: 200px;
-    margin-top: 20px;
-    margin-bottom: 100px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+@media (min-width: 769px) {
+    .image-area {
+        margin-bottom: 75px;
+    }
 }
 
 .image-wrapper {
@@ -23,24 +29,65 @@ img {
 }
 
 .drop-down-area {
-    display: flex;
+    display: block;
     align-items: center;
+    margin-bottom: 50px;
 }
 
+@media (min-width: 769px) {
+    .drop-down-area {
+        display: flex;
+    }
+}
+
+
 .drop-down-grid {
-    width: 25%;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 769px) {
+    .drop-down-grid {
+        width: 25%;
+    }
 }
 
 .drop-down-wrapper {
     width: fit-content;
     margin: auto;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
+}
+
+@media (min-width: 769px) {
+    .drop-down-grid {
+        margin-bottom: 32px;
+    }
 }
 
 .radio-button-wrapper {
-    width: 90%;
+    width: 82%;
     margin: auto;
     display: grid;
     font-size: 18px;
     min-height: 145px;
+}
+
+@media (min-width: 769px) {
+    .radio-button-wrapper {
+        width: 90%;
+    }
+}
+
+.total-time-wrapper {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.total-time-text {
+    font-size: 32px;
+}
+
+.button-wrapper {
+    text-align: center;
+    margin-bottom: 30px;
 }

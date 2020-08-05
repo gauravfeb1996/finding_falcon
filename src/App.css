@@ -38,6 +38,12 @@
 }
 
 .container {
-  height: calc(100vh - 150px);
-  overflow: scroll;
+  height: calc(100vh - 115px);
+  overflow: auto;
+}
+
+@media (min-width: 769px) {
+  .container {
+    height: calc(100vh - 150px);
+  }
 }

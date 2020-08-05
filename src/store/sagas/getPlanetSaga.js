@@ -7,7 +7,7 @@ import {
   } from 'redux-saga/effects';
 // import * as actions from '../actions/actionMethods';
 import * as actions from '../actions/planets/constants';
-import { getPlanetsSuccess } from '../actions/planets/getPlanets'
+import { getPlanetsSuccess } from '../actions/planets/planets'
 import apiHandler from '../../utils/api/apiHandler.js';
 
 

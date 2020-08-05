@@ -1,11 +1,17 @@
 .drop-down {
-    width: 20vw;
+    width: 75vw;
     height: 45px;
     background: #f1ebeb;
     font-size: 22px;
     border-color: black;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+@media (min-width: 769px) {
+    .drop-down {
+        width: 20vw;
+    }
 }
 
 .drop-down:focus{

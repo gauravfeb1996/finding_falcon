@@ -7,7 +7,7 @@ import MainContent from '../Main/MainContent';
 import falcon from '../../assets/falcon.svg';
 
 import { getTokenRequest } from '../../store/actions/tokenAction/getToken';
-import { getPlanetsRequest } from '../../store/actions/planets/getPlanets';
+import { getPlanetsRequest } from '../../store/actions/planets/planets';
 import { getSpaceShipsRequest } from '../../store/actions/spaceShips/getSpaceShips';
 
 class Main extends React.Component {

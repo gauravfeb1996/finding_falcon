@@ -3,7 +3,8 @@ import React from 'react';
 
 import './RadioButton.css';
 
-const RadioButton = ({ options, handleChange, id, ...rest}) => {
+const RadioButton = ({ options, handleChange, id, selectedPlanet, ...rest}) => {
+
     return (
         <>
             {options.map((spaceShip, index) => 
@@ -15,6 +16,9 @@ const RadioButton = ({ options, handleChange, id, ...rest}) => {
                             name={id} 
                             value={spaceShip.name} 
                             onChange={handleChange}
+                            disabled={!(spaceShip.total_no) || 
+                                spaceShip.max_distance < selectedPlanet.distance
+                            }
                         />
                         <label htmlFor={id} >{spaceShip.name} ({spaceShip.total_no})</label>
                     </div>
