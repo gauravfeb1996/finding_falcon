@@ -1,15 +1,18 @@
 import produce from 'immer';
-import { GET_PLANETS_SUCCESS, UPDATE_SELECTED_PLANET } from '../actions/planets/constants'
+import { GET_PLANETS_SUCCESS, UPDATE_SELECTED_PLANET } from '../actions/planets/constants';
+import { noPlanetsCanSelected } from '../../utils/constants';
 
 const initialState = {
   planets: null,
-  selectedPlanet: new Array(4)
+  selectedPlanet: new Array(noPlanetsCanSelected)
 };
 
 const findPlanetUtil = (selectedPlanet, data, selectedPlanetDraft, index) => {
   data.find(function(planet){
+    debugger
     if(planet.name === selectedPlanet){
       selectedPlanetDraft[index] = planet;
+      return null;
     }
     return null;
   })

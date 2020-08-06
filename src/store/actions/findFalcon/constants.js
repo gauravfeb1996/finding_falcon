@@ -1,0 +1,2 @@
+export const GET_FIND_FALCON_REQUEST = 'app/findFalcon/GET_FIND_FALCON_REQUEST';
+export const GET_FIND_FALCON_SUCCESS = 'app/findFalcon/GET_FIND_FALCON_SUCCESS';

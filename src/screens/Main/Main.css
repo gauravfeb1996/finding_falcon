@@ -4,12 +4,6 @@
     margin-bottom: 50px;
 }
 
-@media (min-width: 769px) {
-    .image-area {
-        margin-bottom: 75px;
-    }
-}
-
 .image-wrapper {
     height: 100%;
     width: fit-content;
@@ -31,7 +25,7 @@ img {
 .drop-down-area {
     display: block;
     align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 @media (min-width: 769px) {
@@ -58,6 +52,11 @@ img {
     margin-bottom: 24px;
 }
 
+.drop-down-wrapper .title{
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
 @media (min-width: 769px) {
     .drop-down-grid {
         margin-bottom: 32px;
@@ -69,7 +68,12 @@ img {
     margin: auto;
     display: grid;
     font-size: 18px;
-    min-height: 145px;
+    min-height: 181px;
+}
+
+.radio-button-wrapper .title{
+    font-size: 18px;
+    margin-bottom: 16px;
 }
 
 @media (min-width: 769px) {
@@ -88,6 +92,17 @@ img {
 }
 
 .button-wrapper {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.result-messages-wrapper {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.try-again-btn-wrapper {
     text-align: center;
     margin-bottom: 30px;
 }

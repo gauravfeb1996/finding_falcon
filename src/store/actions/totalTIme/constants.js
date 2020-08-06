@@ -1,0 +1,1 @@
+export const UPDATE_TOTAL_TIME_REQUEST = 'app/totalTime/UPDATE_TOTAL_TIME_REQUEST';

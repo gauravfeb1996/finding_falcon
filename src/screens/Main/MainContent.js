@@ -1,14 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import update from 'react-addons-update';
-import DropDown from '../../components/DropDown/DropDown';
-import RadioButton from '../../components/RadioButton/RadioButton';
-import Button from '../../components/Button/Button';
 import './Main.css'
 
-import { noPlanetsCanSelected } from '../../utils/constants';
-import { updateShipCountRequest } from '../../store/actions/updateShipCount/upadateShipCount';
-import { updateSelectedPlanet } from '../../store/actions/planets/planets';
+import FormArea from './FormArea';
+
+import Button from '../../components/Button/Button';
+
+import { findFalconRequest } from '../../store/actions/findFalcon/findFalcon';
 
 
 class MainContent extends React.Component{
@@ -16,94 +14,72 @@ class MainContent extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            planets: new Array(noPlanetsCanSelected),
-            spaceShips: new Array(noPlanetsCanSelected),
             showResultPage: false
         };
     }
 
-    handlePlanetSelectChange = (index, e) => {
-        const { selectedPlanetUpdate } = this.props;
-        let value = e.target.value;
-        this.setState(update(this.state, {
-            planets: {
-                [index]: {
-                    $set: value
-                }
+    submit = (selectedPlanets, selectedShips) => {
+        const { token, requestFindFalcone } = this.props;
+
+        let requestData = {
+            token: token,
+            planet_names: selectedPlanets,
+            vehicle_names: selectedShips
+        }
+
+        return new Promise((resolve,reject)=>
+        {
+            requestFindFalcone(requestData, resolve, reject);
+        }).then(
+            success=>{
+                this.setState({showResultPage: true});
             }
-        }));
-        selectedPlanetUpdate(index, value)
+        ).catch(
+            fail=>{
+                alert(fail);
+            }
+        )
     }
 
-    handleSpaceShipSelectChange = (index, e) => {
-        const { requestShipCountUpdate } = this.props;
-        let value = e.target.value;
-        requestShipCountUpdate(this.state.spaceShips[index], value)
-        this.setState(update(this.state, {
-            spaceShips: {
-                [index]: {
-                    $set: value
-                }
-            }
-        }));
-    }
-
-    submit = () => {
-       console.log("Final submit");
-       this.setState({showResultPage: true});
+    startAgain = () => {
+        window.location.reload();
     }
 
     render() {
-        const { planets, spaceShips, selectedPlanets} = this.props; 
-        const iterationArray = new Array(noPlanetsCanSelected).fill(0,0,noPlanetsCanSelected);
-
+        const { result, totalTime } = this.props;
         return (
             <>
-            {this.state.showResultPage ? (
-                <>
-                    <span>Going to be final page</span>
-                </>
-            ): (
-                <>
-                    {planets && spaceShips &&
-                        <>
-                            <div className="drop-down-area">
-                            {iterationArray.map((value, index) => 
-                                <div key={index} className="drop-down-grid">
-                                    <div className="drop-down-wrapper">
-                                            <DropDown 
-                                                options={planets}
-                                                id={index}
-                                                handleChange={(e)=> this.handlePlanetSelectChange(index, e)}
-                                                disabled={index!==0 && !this.state.spaceShips[index-1]}
-                                            />
-                                    </div>
-                                    <div className="radio-button-wrapper">
-                                        {this.state.planets[index] && 
-                                            <RadioButton 
-                                                options={spaceShips}
-                                                id={index}
-                                                handleChange={(e)=> this.handleSpaceShipSelectChange(index, e)}
-                                                selectedPlanet={selectedPlanets[index]}
-                                            />
-                                        }
-                                    </div>
+                {this.state.showResultPage ? (
+                    <div>
+                        {result.status === 'success' ? (
+                            <div>
+                                <div className="result-messages-wrapper">
+                                    <span>Success! Congratulations on finding falcon. King Shan might be pleased.</span>
                                 </div>
-                            )}
+                                <div className="result-messages-wrapper">
+                                    <span>Total Time: {totalTime}</span>
+                                </div>
+                                <div className="result-messages-wrapper">
+                                    <span>Planet found: {result.planet_name}</span>
+                                </div>
                             </div>
-                            <div className="total-time-wrapper" >
-                                <span className="total-time-text" >Total Time: </span>
+                        ): (
+                            <div className="result-messages-wrapper">
+                                    <span>Oops! You failed in the quest. Better luck next time!</span>
                             </div>
-                            <div className="button-wrapper">
-                                <Button 
-                                    handleClick={() => this.submit()}
-                                />
-                            </div>
-                        </>
-
-                    }
-                </>
-            )}
+                        )}
+                        <div className='try-again-btn-wrapper'>
+                            <Button 
+                                handleClick={() => this.startAgain()}
+                                text='TRY AGAIN'
+                            />
+                        </div>
+                    </div>
+                ): (    
+                    <FormArea 
+                        handleSubmit={(selectedPlanets, SelectedShips) => this.submit(selectedPlanets, SelectedShips)}
+                    />
+                )}
             </>
         );
     }
@@ -111,14 +87,13 @@ class MainContent extends React.Component{
 
 
 const mapStateToProps = state => ({
-    planets: state.planets.planets,
-    selectedPlanets: state.planets.selectedPlanet,
-    spaceShips: state.spaceShips.spaceShips
+    token: state.token.token,
+    result: state.result.result,
+    totalTime: state.totalTime.totalTime
 })
   
 const mapDispatchToProps = dispatch => ({
-    requestShipCountUpdate: (prevSelected, newSelected) => dispatch(updateShipCountRequest(prevSelected, newSelected)),
-    selectedPlanetUpdate: (index, selectedPlanet) => dispatch(updateSelectedPlanet(index, selectedPlanet))
+    requestFindFalcone: (requestData, resolve, reject) => dispatch(findFalconRequest(requestData, resolve, reject))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContent);

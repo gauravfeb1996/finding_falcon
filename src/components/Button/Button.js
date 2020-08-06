@@ -3,14 +3,15 @@ import React from 'react';
 
 import './Button.css';
 
-const Button = ({ handleClick, ...rest}) => {
+const Button = ({ handleClick, disabled, text, ...rest}) => {
 
     return (
         <>
             <button className="button"
+                disabled={disabled}
                 onClick={handleClick}
             >
-                SEARCH
+                {text}
             </button>  
         </>
     )

@@ -3,7 +3,7 @@ import React from 'react';
 
 import './DropDown.css';
 
-const DropDown = ({ options, handleChange, disabled, id, ...rest}) => {
+const DropDown = ({ options, handleChange, disabled, id, selectedPlanets, ...rest}) => {
 
     return (
         <>
@@ -17,7 +17,11 @@ const DropDown = ({ options, handleChange, disabled, id, ...rest}) => {
             />    
             <datalist id={id}>
                 {options.map((planet, index) => 
-                    <option key={index} value={planet.name} > {planet.name} </option>
+                    <option 
+                        key={index} 
+                        value={planet.name}
+                        disabled={selectedPlanets.indexOf(planet.name)>-1}
+                    > {planet.name} </option>
                 )}
             </datalist>
         </>

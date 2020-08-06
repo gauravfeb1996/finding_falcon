@@ -5,9 +5,7 @@ import axios from "axios";
 import { BASE_URL } from "../constants";
 
 class Proxy {
- /**
-  * Constructor to set Static Header for API calls.
-  */
+
  constructor() {
    this.headers = {
      "Content-Type": "application/json",
@@ -15,21 +13,12 @@ class Proxy {
    };
  }
 
- /**
-  * Call API.
-  * @param {string, string, object, object, boolean}
-  * @returns {Promise}
-  */
- call(method, url, params = {}, data = {}, headers = "") {
-   if (headers) {
-     this.headers.Authorization = headers;
-   }
+ call(method, url, data = {}) {
    return axios({
      headers: this.headers,
      method,
      url,
      baseURL: BASE_URL,
-     params,
      data,
      timeout: 60000,
      responseType: "json"
