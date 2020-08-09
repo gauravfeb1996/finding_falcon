@@ -25,26 +25,24 @@ class FormArea extends React.Component{
     handlePlanetSelectChange = (index, e) => {
         const { selectedPlanetUpdate, requestShipCountUpdate, totalTimeUpdate } = this.props;
         let value = e.target.value;
+        selectedPlanetUpdate(index, value);
         this.setState(update(this.state, {
             planets: {
                 [index]: {
                     $set: value
                 }
+            },
+            spaceShips: {
+                [index]: {
+                    $set: undefined
+                }
             }
         }));
-        selectedPlanetUpdate(index, value);
         if(this.state.planets[index] && this.state.spaceShips[index]){
             let spaceShipsRadio = document.getElementById("radio"+index+this.state.spaceShips[index]);
             spaceShipsRadio.value = null;
             spaceShipsRadio.checked = false;
             requestShipCountUpdate(this.state.spaceShips[index], null, index);
-            this.setState(update(this.state, {
-                spaceShips: {
-                    [index]: {
-                        $set: undefined
-                    }
-                }
-            }));
             totalTimeUpdate(index, 0);
         }
     }
