@@ -47,7 +47,7 @@ img {
 }
 
 .drop-down-wrapper {
-    width: fit-content;
+    /* width: fit-content; */
     margin: auto;
     margin-bottom: 24px;
 }
@@ -57,14 +57,23 @@ img {
     margin-bottom: 16px;
 }
 
+.drop-down-wrapper .root{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 73vw;
+}
+
 @media (min-width: 769px) {
     .drop-down-grid {
         margin-bottom: 32px;
     }
+    .drop-down-wrapper .root{
+        max-width: 20vw;
+    }
 }
 
 .radio-button-wrapper {
-    width: 82%;
+    width: 73vw;
     margin: auto;
     display: grid;
     font-size: 18px;
@@ -72,9 +81,9 @@ img {
 }
 
 .radio-button-wrapper .title{
-    font-size: 18px;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
 }
+
 
 @media (min-width: 769px) {
     .radio-button-wrapper {

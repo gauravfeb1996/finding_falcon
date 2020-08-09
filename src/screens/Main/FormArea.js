@@ -79,15 +79,12 @@ class FormArea extends React.Component{
                         {iterationArray.map((value, index) => 
                             <div key={index} className="drop-down-grid">
                                 <div className="drop-down-wrapper">
-                                        <div className="title">
-                                            <span> Destination {index+1}</span>
-                                        </div>
-                                        <DropDown 
-                                            options={planets}
-                                            id={index}
-                                            handleChange={(e)=> this.handlePlanetSelectChange(index, e)}
-                                            selectedPlanets = {this.state.planets}
-                                        />
+                                    <DropDown 
+                                        options={planets}
+                                        id={index}
+                                        handleChange={(e)=> this.handlePlanetSelectChange(index, e)}
+                                        selectedPlanets = {this.state.planets}
+                                    />
                                 </div>
                                 <div className="radio-button-wrapper">
                                     {this.state.planets[index] &&  (
