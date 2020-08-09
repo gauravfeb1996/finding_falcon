@@ -9,7 +9,6 @@ const initialState = {
 
 const findPlanetUtil = (selectedPlanet, data, selectedPlanetDraft, index) => {
   data.find(function(planet){
-    debugger
     if(planet.name === selectedPlanet){
       selectedPlanetDraft[index] = planet;
       return null;

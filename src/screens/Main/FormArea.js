@@ -9,6 +9,7 @@ import './Main.css'
 import { noPlanetsCanSelected } from '../../utils/constants';
 import { updateShipCountRequest } from '../../store/actions/updateShipCount/upadateShipCount';
 import { updateSelectedPlanet } from '../../store/actions/planets/planets';
+import { updateTotalTimeRequest } from '../../store/actions/totalTIme/totalTime';
 
 
 class FormArea extends React.Component{
@@ -34,11 +35,15 @@ class FormArea extends React.Component{
         selectedPlanetUpdate(index, value)
     }
 
-    handleSpaceShipSelectChange = (index, e) => {
-        debugger
-        const { requestShipCountUpdate } = this.props;
-        let value = e.target.value;
+    handleSpaceShipSelectChange = (index, spaceShip) => {
+        const { requestShipCountUpdate, selectedPlanets, totalTimeUpdate } = this.props;
+        let value = spaceShip.name;
+        let selectedSpaceShipsSpeed = spaceShip.speed;
+        let selectedPlanetDistance = selectedPlanets[index].distance;
+        let timeTaken = selectedPlanetDistance/selectedSpaceShipsSpeed;
+
         requestShipCountUpdate(this.state.spaceShips[index], value, index);
+        totalTimeUpdate(index, timeTaken);
         this.setState(update(this.state, {
             spaceShips: {
                 [index]: {
@@ -67,7 +72,7 @@ class FormArea extends React.Component{
                                             options={planets}
                                             id={index}
                                             handleChange={(e)=> this.handlePlanetSelectChange(index, e)}
-                                            disabled={(index!==0 && !this.state.spaceShips[index-1]) || this.state.planets[index+1]}
+                                            disabled={(index!==0 && !this.state.spaceShips[index-1]) || this.state.planets[index+1] || this.state.spaceShips[index]}
                                             selectedPlanets = {this.state.planets}
                                         />
                                 </div>
@@ -80,7 +85,7 @@ class FormArea extends React.Component{
                                             <RadioButton 
                                                 options={spaceShips}
                                                 id={index}
-                                                handleChange={(e)=> this.handleSpaceShipSelectChange(index, e)}
+                                                handleChange={(spaceShip)=> this.handleSpaceShipSelectChange(index, spaceShip)}
                                                 selectedPlanets={selectedPlanets}
                                                 selectedSpaceShips = {selectedSpaceShips[index]}
                                             />
@@ -120,7 +125,8 @@ const mapStateToProps = state => ({
   
 const mapDispatchToProps = dispatch => ({
     requestShipCountUpdate: (prevSelected, newSelected, index) => dispatch(updateShipCountRequest(prevSelected, newSelected, index)),
-    selectedPlanetUpdate: (index, selectedPlanet) => dispatch(updateSelectedPlanet(index, selectedPlanet))
+    selectedPlanetUpdate: (index, selectedPlanet) => dispatch(updateSelectedPlanet(index, selectedPlanet)),
+    totalTimeUpdate: (index, timeTaken) => dispatch(updateTotalTimeRequest(index, timeTaken))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormArea);

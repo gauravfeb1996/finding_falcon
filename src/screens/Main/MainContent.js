@@ -36,7 +36,7 @@ class MainContent extends React.Component{
             }
         ).catch(
             fail=>{
-                alert(fail);
+                alert("Some error occurred. Please try again later");
             }
         )
     }

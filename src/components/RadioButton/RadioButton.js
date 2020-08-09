@@ -16,7 +16,7 @@ const RadioButton = ({ options, handleChange, id, selectedPlanets, selectedSpace
                             id={id} 
                             name={id} 
                             value={spaceShip.name} 
-                            onChange={handleChange}
+                            onChange={() => handleChange(spaceShip)}
                             disabled={!(spaceShip.total_no) || 
                                 spaceShip.max_distance < selectedPlanets[id].distance ||
                                 selectedPlanets[id+1]
