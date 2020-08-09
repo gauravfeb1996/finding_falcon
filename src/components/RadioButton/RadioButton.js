@@ -13,13 +13,12 @@ const RadioButton = ({ options, handleChange, id, selectedPlanets, selectedSpace
                         <input 
                             className="radio-button"
                             type="radio" 
-                            id={id} 
+                            id={"radio"+id+spaceShip.name} 
                             name={id} 
                             value={spaceShip.name} 
                             onChange={() => handleChange(spaceShip)}
                             disabled={!(spaceShip.total_no) || 
-                                spaceShip.max_distance < selectedPlanets[id].distance ||
-                                selectedPlanets[id+1]
+                                spaceShip.max_distance < selectedPlanets[id].distance
                             }
                         />
                         <label htmlFor={id} >{spaceShip.name} ({spaceShip.total_no})</label>

@@ -4,26 +4,27 @@ import React from 'react';
 import './DropDown.css';
 
 const DropDown = ({ options, handleChange, disabled, id, selectedPlanets, ...rest}) => {
-
     return (
         <>
-            <input 
-                list={id} 
+            <select 
                 name="planets" 
-                id="planets" 
+                id={"planet"+id} 
                 className="drop-down"
                 onChange={handleChange}
                 disabled={disabled}
-            />    
-            <datalist id={id}>
-                {options.map((planet, index) => 
-                    <option 
-                        key={index} 
-                        value={planet.name}
-                        disabled={selectedPlanets.indexOf(planet.name)>-1}
-                    > {planet.name} </option>
-                )}
-            </datalist>
+                defaultValue={'DEFAULT'}
+            >
+            <option  value='DEFAULT' disabled/>
+            {options.map((planet, index) => 
+                <option 
+                    key={index} 
+                    value={planet.name}
+                    disabled={selectedPlanets.indexOf(planet.name)>-1}
+                > 
+                    {planet.name} 
+                </option>
+            )}
+            </select>
         </>
     )
 }

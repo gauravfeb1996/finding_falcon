@@ -23,7 +23,7 @@ class FormArea extends React.Component{
     }
 
     handlePlanetSelectChange = (index, e) => {
-        const { selectedPlanetUpdate } = this.props;
+        const { selectedPlanetUpdate, requestShipCountUpdate, totalTimeUpdate } = this.props;
         let value = e.target.value;
         this.setState(update(this.state, {
             planets: {
@@ -32,7 +32,22 @@ class FormArea extends React.Component{
                 }
             }
         }));
-        selectedPlanetUpdate(index, value)
+        selectedPlanetUpdate(index, value);
+        if(this.state.planets[index] && this.state.spaceShips[index]){
+            let spaceShipsRadio = document.getElementById("radio"+index+this.state.spaceShips[index]);
+            debugger
+            spaceShipsRadio.value = null;
+            spaceShipsRadio.checked = false;
+            requestShipCountUpdate(this.state.spaceShips[index], null, index);
+            this.setState(update(this.state, {
+                spaceShips: {
+                    [index]: {
+                        $set: undefined
+                    }
+                }
+            }));
+            totalTimeUpdate(index, 0);
+        }
     }
 
     handleSpaceShipSelectChange = (index, spaceShip) => {
@@ -72,7 +87,6 @@ class FormArea extends React.Component{
                                             options={planets}
                                             id={index}
                                             handleChange={(e)=> this.handlePlanetSelectChange(index, e)}
-                                            disabled={(index!==0 && !this.state.spaceShips[index-1]) || this.state.planets[index+1] || this.state.spaceShips[index]}
                                             selectedPlanets = {this.state.planets}
                                         />
                                 </div>
@@ -99,10 +113,10 @@ class FormArea extends React.Component{
                             <span className="total-time-text" >Total Time: {totalTime}</span>
                         </div>
                         <div className="button-wrapper">
-                            {(this.state.spaceShips[noPlanetsCanSelected-1]) && (
+                            {(!this.state.spaceShips.includes(undefined)) && (
                                 <Button 
                                     handleClick={() => handleSubmit(this.state.planets, this.state.spaceShips)}
-                                    text="SUBMIT"
+                                    text="FIND FALCON"
                                 />
                             )}
                         </div>
