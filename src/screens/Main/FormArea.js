@@ -35,7 +35,6 @@ class FormArea extends React.Component{
         selectedPlanetUpdate(index, value);
         if(this.state.planets[index] && this.state.spaceShips[index]){
             let spaceShipsRadio = document.getElementById("radio"+index+this.state.spaceShips[index]);
-            debugger
             spaceShipsRadio.value = null;
             spaceShipsRadio.checked = false;
             requestShipCountUpdate(this.state.spaceShips[index], null, index);
