@@ -17,8 +17,8 @@ class FormArea extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            planets: new Array(noPlanetsCanSelected),
-            spaceShips: new Array(noPlanetsCanSelected),
+            selectedPlanetNames: new Array(noPlanetsCanSelected),
+            selectedSpaceShipNames: new Array(noPlanetsCanSelected),
         };
     }
 
@@ -27,22 +27,22 @@ class FormArea extends React.Component{
         let value = e.target.value;
         selectedPlanetUpdate(index, value);
         this.setState(update(this.state, {
-            planets: {
+            selectedPlanetNames: {
                 [index]: {
                     $set: value
                 }
             },
-            spaceShips: {
+            selectedSpaceShipNames: {
                 [index]: {
                     $set: undefined
                 }
             }
         }));
-        if(this.state.planets[index] && this.state.spaceShips[index]){
-            let spaceShipsRadio = document.getElementById("radio"+index+this.state.spaceShips[index]);
+        if(this.state.selectedPlanetNames[index] && this.state.selectedSpaceShipNames[index]){
+            let spaceShipsRadio = document.getElementById("radio"+index+this.state.selectedSpaceShipNames[index]);
             spaceShipsRadio.value = null;
             spaceShipsRadio.checked = false;
-            requestShipCountUpdate(this.state.spaceShips[index], null, index);
+            requestShipCountUpdate(this.state.selectedSpaceShipNames[index], null, index);
             totalTimeUpdate(index, 0);
         }
     }
@@ -54,10 +54,10 @@ class FormArea extends React.Component{
         let selectedPlanetDistance = selectedPlanets[index].distance;
         let timeTaken = selectedPlanetDistance/selectedSpaceShipsSpeed;
 
-        requestShipCountUpdate(this.state.spaceShips[index], value, index);
+        requestShipCountUpdate(this.state.selectedSpaceShipNames[index], value, index);
         totalTimeUpdate(index, timeTaken);
         this.setState(update(this.state, {
-            spaceShips: {
+            selectedSpaceShipNames: {
                 [index]: {
                     $set: value
                 }
@@ -81,11 +81,11 @@ class FormArea extends React.Component{
                                         options={planets}
                                         id={index}
                                         handleChange={(e)=> this.handlePlanetSelectChange(index, e)}
-                                        selectedPlanets = {this.state.planets}
+                                        selectedPlanets = {this.state.selectedPlanetNames}
                                     />
                                 </div>
                                 <div className="radio-button-wrapper">
-                                    {this.state.planets[index] &&  (
+                                    {this.state.selectedPlanetNames[index] &&  (
                                         <>
                                             <div className="title">
                                                 <span> Select Vehicle : </span>
@@ -107,9 +107,9 @@ class FormArea extends React.Component{
                             <span className="total-time-text" >Total Time: {totalTime}</span>
                         </div>
                         <div className="button-wrapper">
-                            {(!this.state.spaceShips.includes(undefined)) && (
+                            {(!this.state.selectedSpaceShipNames.includes(undefined)) && (
                                 <Button 
-                                    handleClick={() => handleSubmit(this.state.planets, this.state.spaceShips)}
+                                    handleClick={() => handleSubmit(this.state.selectedPlanetNames, this.state.selectedSpaceShipNames)}
                                     text="FIND FALCON"
                                 />
                             )}

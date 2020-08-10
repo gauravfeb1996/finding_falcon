@@ -1,9 +1,17 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import './RadioButton.css';
 
-const RadioButton = ({ options, handleChange, id, selectedPlanets, selectedSpaceShips,...rest}) => {
+const RadioButton = ({ 
+    options, 
+    handleChange, 
+    id, 
+    disabled, 
+    selectedPlanets, 
+    selectedSpaceShips, 
+    ...rest
+    }) => {
 
     return (
         <>
@@ -17,8 +25,8 @@ const RadioButton = ({ options, handleChange, id, selectedPlanets, selectedSpace
                             name={id} 
                             value={spaceShip.name} 
                             onChange={() => handleChange(spaceShip)}
-                            disabled={!(spaceShip.total_no) || 
-                                spaceShip.max_distance < selectedPlanets[id].distance
+                            disabled={disabled || (!(spaceShip.total_no) || 
+                                spaceShip.max_distance < selectedPlanets[id].distance)
                             }
                         />
                         <label htmlFor={id} >{spaceShip.name} ({spaceShip.total_no})</label>
@@ -31,10 +39,16 @@ const RadioButton = ({ options, handleChange, id, selectedPlanets, selectedSpace
 
 
 RadioButton.propTypes = {
-
+    handleChange: PropTypes.func.isRequired,
+    disabled: PropTypes.bool,
+    options: PropTypes.array.isRequired,
+    selectedPlanets: PropTypes.array,
+    id: PropTypes.number.isRequired
 }
 
 RadioButton.defaultProps = {
+    disabled: false,
+    selectedPlanets: []
 }
 
 

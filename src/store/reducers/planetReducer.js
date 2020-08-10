@@ -15,7 +15,6 @@ const findPlanetUtil = (selectedPlanet, data, selectedPlanetDraft, index) => {
     }
     return null;
   })
-  return null;
 }
 
 const planetsReducer = (state = initialState, action) =>

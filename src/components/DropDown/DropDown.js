@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import './DropDown.css';
 
@@ -34,10 +34,16 @@ const DropDown = ({ options, handleChange, disabled, id, selectedPlanets, ...res
 
 
 DropDown.propTypes = {
-
+    handleChange: PropTypes.func.isRequired,
+    disabled: PropTypes.bool,
+    options: PropTypes.array.isRequired,
+    selectedPlanets: PropTypes.array,
+    id: PropTypes.number.isRequired
 }
 
 DropDown.defaultProps = {
+    disabled: false,
+    selectedPlanets: []
 }
 
 

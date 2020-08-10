@@ -77,7 +77,7 @@ class MainContent extends React.Component{
                     </div>
                 ): (    
                     <FormArea 
-                        handleSubmit={(selectedPlanets, SelectedShips) => this.submit(selectedPlanets, SelectedShips)}
+                        handleSubmit={(selectedPlanets, selectedShips) => this.submit(selectedPlanets, selectedShips)}
                     />
                 )}
             </>
