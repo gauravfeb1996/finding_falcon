@@ -110,7 +110,7 @@ class FormArea extends React.Component{
                             {(!this.state.selectedSpaceShipNames.includes(undefined)) && (
                                 <Button 
                                     handleClick={() => handleSubmit(this.state.selectedPlanetNames, this.state.selectedSpaceShipNames)}
-                                    text="FIND FALCON"
+                                    text="FIND FALCONE"
                                 />
                             )}
                         </div>
