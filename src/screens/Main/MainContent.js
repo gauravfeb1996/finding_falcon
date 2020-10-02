@@ -57,10 +57,10 @@ class MainContent extends React.Component{
                                     <span>Success! Congratulations on finding falcon. King Shan might be pleased.</span>
                                 </div>
                                 <div className="result-messages-wrapper">
-                                    <span>Total Time: {totalTime}</span>
+                                    <span>Total Travel Time: {totalTime}</span>
                                 </div>
                                 <div className="result-messages-wrapper">
-                                    <span>Planet found: {result.planet_name}</span>
+                                    <span>Found at planet: {result.planet_name}</span>
                                 </div>
                             </div>
                         ): (
