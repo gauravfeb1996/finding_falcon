@@ -65,7 +65,7 @@ class MainContent extends React.Component{
                             </div>
                         ): (
                             <div className="result-messages-wrapper">
-                                    <span>Oops! You failed in the quest. Better luck next time!</span>
+                                    <span>Oops! You failed in the quest. See you Later alligator </span>
                             </div>
                         )}
                         <div className='try-again-btn-wrapper'>
